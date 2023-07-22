@@ -18,6 +18,6 @@ const fetchData = async () => {
     fetchData();
   }, []);
 
-  return <h2 className='text-center'>first request</h2>;
+  return <h2 className='text-center'></h2>;
 };
 export default FirstRequest;
