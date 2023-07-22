@@ -7,12 +7,13 @@ const url = 'https://api.arolariu.ro/api/invoices';
 
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
-  }
+}
 
 const Headers = () => {
-  const [decidedItem, setJoke] = useState('random item');
+  const [decidedItem, setInvoice] = useState('random item');
+  const [decidedItemImage, setInvoiceImage] = useState('decided image')
 
-  const fetchDadJoke = async () => {
+  const fetchInvoice = async () => {
     try {
       const { data } = await axios(url, {
         headers: {
@@ -30,8 +31,11 @@ const Headers = () => {
       const randomBoughtItem = randomInvoice.items.boughtItems[randomBoughtItemId].key
 
       const item = randomBoughtItem;
+      
       console.log(item);
-      setJoke(item + ' from invoice nr.' + randomInvoiceId + ' with id ' + randomBoughtItemId);
+      console.log(randomInvoice.invoiceImageURI);
+      setInvoice(item + ' from invoice ' + randomInvoiceId + ' with id ' + (randomBoughtItemId + 1));
+      setInvoiceImage(randomInvoice.invoiceImageURI);
     } catch (error) {
       console.log(error.response);
     }
@@ -39,10 +43,16 @@ const Headers = () => {
 
   return (
     <section className='section text-center'>
-      <button className='btn' onClick={fetchDadJoke}>
+      <button className='btn' onClick={fetchInvoice}>
         Random item
       </button>
-      <p className='dad-joke'>{decidedItem}</p>
+      <p className='invoice'>{decidedItem}</p>
+        <div>
+        <img
+            src={decidedItemImage}
+            alt='invoice_image'
+        />
+        </div>
     </section>
   );
 };
