@@ -34,7 +34,7 @@ const Headers = () => {
       
       console.log(item);
       console.log(randomInvoice.invoiceImageURI);
-      setInvoice(item + ' from invoice ' + randomInvoiceId + ' with id ' + (randomBoughtItemId + 1));
+      setInvoice(item + ',as item number ' + (randomBoughtItemId + 1) + ' from the invoice below with an id of ' + randomInvoiceId);
       setInvoiceImage(randomInvoice.invoiceImageURI);
     } catch (error) {
       console.log(error.response);
