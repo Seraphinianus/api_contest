@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "axios": "^1.4.0"
+    "@react-three/fiber": "^8.13.5",
+    "axios": "^1.4.0",
+    "three": "^0.154.0"
   }
 }
